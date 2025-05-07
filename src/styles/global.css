@@ -1,0 +1,281 @@
+/* Crypto Table Container */
+.crypto-table-container {
+    overflow-x: auto;
+    background: linear-gradient(145deg, #1a1c22, #2d2f38);
+    border-radius: 16px;
+    margin: 2rem 0;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Table Structure */
+  .crypto-table {
+    width: 100%;
+    min-width: 1280px;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.95rem;
+    background: rgba(25, 27, 34, 0.95);
+  }
+  
+  /* Table Header */
+  .crypto-table thead {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+  }
+  
+  .crypto-table th {
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(160deg, #2a2d37, #1f2129);
+    color: #e0e3eb;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #3a3d47;
+  }
+  
+  /* Table Rows */
+  .crypto-table tr {
+    transition: all 0.25s ease;
+  }
+  
+  .crypto-table tr:nth-child(even) {
+    background: rgba(40, 43, 51, 0.15);
+  }
+  
+  .crypto-table tr:hover {
+    background: rgba(55, 58, 68, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Table Cells */
+  .crypto-table td {
+    padding: 1.2rem 1.5rem;
+    color: #f0f3fb;
+    border-bottom: 1px solid rgba(58, 61, 71, 0.5);
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  /* Price Change Cells */
+  .price-change {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .price-up {
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.12);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+  }
+  
+  .price-up::before {
+    content: '↑';
+    margin-right: 0.4rem;
+  }
+  
+  .price-down {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.12);
+    border: 1px solid rgba(248, 113, 113, 0.2);
+  }
+  
+  .price-down::before {
+    content: '↓';
+    margin-right: 0.4rem;
+  }
+  
+  /* Crypto Logo */
+  .crypto-logo {
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+  }
+  
+  .crypto-logo:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Sparkline Chart */
+  .sparkline-container {
+    width: 130px;
+    height: 45px;
+    background: rgba(30, 33, 41, 0.8);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px;
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Numeric Values */
+  .price-cell,
+  .market-cap-cell,
+  .volume-cell,
+  .supply-cell {
+    font-variant-numeric: tabular-nums;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: -0.5px;
+  }
+  
+  /* Interactive Elements */
+  .crypto-table td:not(:first-child) {
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .crypto-table-container {
+      border-radius: 12px;
+      margin: 1.5rem 0;
+    }
+  
+    .crypto-table {
+      min-width: 1100px;
+      font-size: 0.9rem;
+    }
+  
+    .crypto-table th {
+      padding: 1rem;
+      font-size: 0.85rem;
+    }
+  
+    .crypto-table td {
+      padding: 1rem;
+    }
+  
+    .crypto-logo {
+      width: 34px;
+      height: 34px;
+    }
+  }
+  
+  /* Scrollbar Styling */
+  .crypto-table-container::-webkit-scrollbar {
+    height: 8px;
+    background: rgba(40, 43, 51, 0.3);
+  }
+  
+  .crypto-table-container::-webkit-scrollbar-thumb {
+    background: #4b4e5a;
+    border-radius: 4px;
+  }
+  
+  .crypto-table-container::-webkit-scrollbar-thumb:hover {
+    background: #5d606d;
+  }
+
+  /* 7D Chart Container */
+.sparkline-container {
+    width: 140px;
+    height: 50px;
+    background: linear-gradient(145deg, #1e2129, #2a2d38);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Chart Image Styling */
+  .sparkline-chart {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+  }
+  
+  /* Price Line Animation */
+  .sparkline-chart path {
+    stroke: #34d399; /* Green for positive trend */
+    stroke-width: 1.5px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  
+  /* Gradient Under Line */
+  .sparkline-chart path:last-child {
+    fill: url(#chartGradient);
+    opacity: 0.15;
+  }
+  
+  /* Chart Hover Effects */
+  .sparkline-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(145deg, #252831, #303342);
+  }
+  
+  .sparkline-container:hover .sparkline-chart {
+    transform: scale(1.05);
+  }
+  
+  /* Chart Status Indicator */
+  .sparkline-container::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #34d399; /* Default positive color */
+    box-shadow: 0 0 8px rgba(52, 211, 153, 0.3);
+  }
+  
+  /* Negative Trend Variation */
+  .sparkline-container.negative::after {
+    background: #ef4444;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+  }
+  
+  /* SVG Gradient Definition */
+  .sparkline-container svg defs linearGradient#chartGradient stop:first-child {
+    stop-color: #34d399;
+    stop-opacity: 0.3;
+  }
+  
+  .sparkline-container svg defs linearGradient#chartGradient stop:last-child {
+    stop-color: #34d399;
+    stop-opacity: 0;
+  }
+  
+  /* Mobile Optimization */
+  @media (max-width: 768px) {
+    .sparkline-container {
+      width: 100px;
+      height: 40px;
+      padding: 4px;
+    }
+    
+    .sparkline-container::after {
+      width: 6px;
+      height: 6px;
+    }
+  }
+
+
+
+
+
+  
