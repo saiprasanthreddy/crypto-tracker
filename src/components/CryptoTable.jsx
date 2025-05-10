@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { MockWebSocket } from '../services/mockWebSocket';
 import PriceChangeCell from './PriceChangeCell';
 import CryptoChart from './CryptoChart';
+import CryptoLogo from './CryptoLogo'; // Import the new component
 
 const CryptoTable = () => {
   const assets = useSelector(state => state.crypto?.assets ?? []);
@@ -18,7 +19,7 @@ const CryptoTable = () => {
     if (typeof num !== 'number' || isNaN(num)) return 'N/A';
     return num.toLocaleString(undefined, {
       minimumFractionDigits: 2,
-      maximumFractionDigits: 2
+      maximumFractionDigits: 2,
     });
   };
 
@@ -57,25 +58,14 @@ const CryptoTable = () => {
               circulatingSupply: asset?.circulatingSupply ?? 0,
               maxSupply: asset?.maxSupply ?? null,
               sparkline: asset?.sparkline ?? null,
-              // Ensure logo path starts with '/' and has fallback
-              logo: asset?.logo?.trim().startsWith('/') 
-                ? asset.logo.trim() 
-                : `/${asset?.logo?.trim()}` || '/fallback-logo.png'
+              logo: asset?.logo || '/fallback-logo.png', // Simplified logo fallback
             };
 
             return (
               <tr key={safeAsset.id}>
                 <td className="index-cell">{index + 1}</td>
                 <td className="logo-cell">
-                  <img 
-                    src={`${process.env.PUBLIC_URL}${safeAsset.logo}`}
-                    alt={`${safeAsset.name} logo`}
-                    className="crypto-logo"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = `${process.env.PUBLIC_URL}/fallback-logo.png`;
-                    }}
-                  />
+                  <CryptoLogo logo={safeAsset.logo} name={safeAsset.name} />
                 </td>
                 <td className="name-cell">{safeAsset.name}</td>
                 <td className="symbol-cell">{safeAsset.symbol}</td>
